@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: my-postgres:14
+    container_name: postgres
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+volumes:
+  db-store:
